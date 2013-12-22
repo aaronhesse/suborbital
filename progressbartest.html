@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/resources/custom.css" rel="stylesheet">
+    <script type="text/javascript" src="static/resources/js/bootstrap-progressbar.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    <script src="/codemirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="/codemirror/lib/codemirror.css">
+    <script src="/codemirror/mode/css/css.js"></script>
+    <script src="/codemirror/mode/javascript/javascript.js"></script>
+    <script src="/codemirror/mode/xml/xml.js"></script>
+    <script src="/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    $(document).ready(function(){
+
+        var progress = setInterval(function() {
+            var $bar = $('.bar');
+
+            if ($bar.width()==400) {
+                clearInterval(progress);
+                $('.progress').removeClass('active');
+            } else {
+                $bar.width($bar.width()+40);
+            }
+            $bar.text($bar.width()/4 + "%");
+        }, 800);
+
+    });
+
+</script>
+
+<div class="container">
+    <div class="progress progress-striped active">
+        <div class="bar" style="width: 0%;"></div>
+    </div>
+</div>
+
+</body>
+</html>
