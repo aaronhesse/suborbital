@@ -1,5 +1,12 @@
-add a target box a-la gmail file drop
-change ip address to anonymous user animal icon (a-la gmail)
-figure out a way to make the bar hidden by default, and then show it when file is dropped?
-add % text to the progress bar (maybe later)
 change chrome warning to be a top banner like "save this password" box in chrome?
+
+questions:
+
+what happens when more than 2 people go to a URL? is this case handled?
+
+advantages:
+
+simplest way to send a file of any size (up to 10gb) to another person
+files are never seen by the server, data is p2p.
+- can encrypt data from end to end
+-
