@@ -1,5 +1,11 @@
 var connectedUserCount = 0;
 
+var userIDMap =
+{
+    1: "monkey",
+    2: "hyena",
+}
+
 function onBodyLoad()
 {
     setupDropArea();
@@ -7,10 +13,7 @@ function onBodyLoad()
     hideProgressBar();
     hideFileUploadInput();
     performBrowserCheck();
-
-    document.getElementById("connectedMessage").innerHTML = "Connected Users: ";
-
-    connectUsers();
+    connectUser();
 }
 
 function setupDropArea()
@@ -76,24 +79,23 @@ function showProgressBar()
 
 function performBrowserCheck()
 {
-    // check to see if the browser is chrome or not (we only support chrome).
-    // if we aren't chrome then set the innerText of the warning div as just a space (we don't warn).
-
-    var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-
-    if (!is_chrome)
-    {
-        document.getElementById("chromeWarning").innerText = "This site is designed and tested for use on Chrome only!";
-    }
-    else
-    {
-        $('#chromeWarning').hide();
-    }
+    if (!browserIsChrome())
+        setChromeWarningText();
 }
 
-function connectUsers()
+function browserIsChrome()
 {
-    // TODO: actually check user count and modify innerHTML to feature that many anonymousAnimal images. Max should probably be 2.
+    return navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+}
+
+function setChromeWarningText()
+{
+    document.getElementById("chromeWarning").innerText = "This site is designed and tested for use on Chrome only!";
+}
+
+function connectUser()
+{
+    // We may have to talk with heroku or the websockets server to keep track of the connectedUsers.
     if ( connectedUserCount == 2 )
         return;
 
@@ -103,7 +105,11 @@ function connectUsers()
 
 function updateUserGlyphs()
 {
-    document.getElementById("connectedMessage").innerHTML += "<img src='static/resources/monkey.png'> <img src='static/resources/hyena.png'>";
+    document.getElementById("connectedMessage").innerHTML = "Connected Users: ";
+
+    var user = 0;
+    while ( user != connectedUserCount )
+        document.getElementById("connectedMessage").innerHTML += "<img src='static/resources/" + userIDMap[++user] + ".png'>";
 }
 
 function sendFile( filename, data )
@@ -112,8 +118,9 @@ function sendFile( filename, data )
 
     hideInstructions();
     showProgressBar();
-    window.setTimeout(function(){
 
+    window.setTimeout(function()
+    {
         var progress = "100%";
 
         document.getElementById("filename").innerText = "Sending: " + filename;

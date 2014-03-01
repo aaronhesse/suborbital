@@ -14,8 +14,6 @@ body
     padding-top: 85px;
     padding-bottom: 85px;
 
-    font-family: WebFont;
-
     float: none;
     margin: 0px auto;
     border-radius: 0px;
@@ -87,16 +85,4 @@ body
     -ms-transition: width 6s ease-in-out;
     -o-transition: width 6s ease-in-out;
     transition: width 6s ease-in-out;
-}
-
-@font-face{
-    font-family:'WebFont';
-    src:url('font/webfont.eot?v=3.2.0');
-    src:url('font/webfont.eot?#iefix&v=3.2.0')
-    format('embedded-opentype'),url('font/webfont.woff?v=3.2.0')
-    format('woff'),url('font/webfont.ttf?v=3.2.0')
-    format('truetype'),url('font/webfont.svg#fontawesomeregular?v=3.2.0')
-    format('svg');
-    font-weight:normal;
-    font-style:normal;
 }
